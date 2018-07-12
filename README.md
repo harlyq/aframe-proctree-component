@@ -4,6 +4,10 @@ AFRAME **proctree** component for generating procedural trees using https://gith
 
 The system generates two object3Ds, "trunk" for the trunk and "mesh" for the twigs (the twigs can be modified with the material component)
 
+Demo at https://harlyq.github.io/aframe-proctree-component/ (twig-1 from donmccurdy)
+
+![Screenshot](assets/screenshot.jpg)
+
 ## Examples
 
 ```html
