@@ -1,0 +1,29 @@
+{
+  "name": "aframe-proctree-component",
+  "version": "0.1.0",
+  "description": "Low poly procedural trees for A-Frame using proctree",
+  "files": ["dist"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harlyq/aframe-proctree-component.git"
+  },
+  "scripts": {
+    "build": "browserify src/proctree-component.js -o dist/aframe-proctree-component.js && uglifyjs dist/aframe-proctree-component.js -c -m -o dist/aframe-proctree-component.min.js",
+    "watch": "watchify src/proctree-component.js -o dist/aframe-proctree-component.js --verbose"
+  },
+  "author": "harlyq",
+  "keywords": [
+    "a-frame",
+    "aframe",
+    "aframe-vr",
+    "aframe-component"
+  ],
+  "peerDependencies": {
+    "aframe": "^0.8.2"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harlyq/aframe-proctree-component/issues"
+  },
+  "homepage": "https://github.com/harlyq/aframe-proctree-component#readme"
+}
