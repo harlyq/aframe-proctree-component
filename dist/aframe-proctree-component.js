@@ -521,6 +521,10 @@ module.exports = Tree;
 // MIT license
 const Tree = require("../lib/proctree.js")
 
+const MESH = "mesh"
+const TRUNK = "trunk"
+const TWIGS = "twigs"
+
 AFRAME.registerComponent("proctree", {
   schema: {
     seed: { type: "int", default: 262 },
@@ -550,13 +554,12 @@ AFRAME.registerComponent("proctree", {
 
   init() {
     this.trunkMat = new THREE.MeshLambertMaterial({color: "brown"})
+    this.trunkMat.name = TRUNK
     this.twigsMat = new THREE.MeshLambertMaterial({color: "green" })
+    this.twigsMat.name = TWIGS
   },
 
   update(oldData) {
-    const TWIGS_OBJ = "mesh"
-    const TRUNK_OBJ = "trunk"
-
     let params = Object.assign({}, this.data)
     if (params.seed < 0) params.seed = Math.random()*23748923
 
@@ -569,8 +572,8 @@ AFRAME.registerComponent("proctree", {
 
     // reuse the previous trunk material, this lets other components override the materials, and also
     // lets us keep material changes that are made through the inspector
-    let trunkMat = this.el.getObject3D(TRUNK_OBJ) ? this.el.getObject3D(TRUNK_OBJ).material : this.trunkMat
-    let twigsMat = this.el.getObject3D(TWIGS_OBJ) ? this.el.getObject3D(TWIGS_OBJ).material : this.twigsMat
+    let trunkMat = this.el.getObject3D(TRUNK) ? this.el.getObject3D(TRUNK).material : this.trunkMat
+    let twigsMat = this.el.getObject3D(MESH) ? this.el.getObject3D(MESH).material : this.twigsMat
 
     // change our trunkMat, so we don't alter the color if another component replaced the trunk material
     this.trunkMat.color.setStyle(this.data.trunkColor)
@@ -578,8 +581,8 @@ AFRAME.registerComponent("proctree", {
     let trunkMesh = new THREE.Mesh(trunkGeo, trunkMat)
     let twigsMesh = new THREE.Mesh(twigsGeo, twigsMat)
 
-    this.el.setObject3D(TRUNK_OBJ, trunkMesh)
-    this.el.setObject3D(TWIGS_OBJ, twigsMesh)
+    this.el.setObject3D(TRUNK, trunkMesh) // need a special component to texture this
+    this.el.setObject3D(MESH, twigsMesh) // can texture this with the material component
   },
 
   newGeo(verts, faces, uv) {

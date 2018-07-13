@@ -2,7 +2,7 @@
 
 AFRAME **proctree** component for generating procedural trees using https://github.com/supereggbert/proctree.js/ from supereggbert.
 
-The system generates two object3Ds, "trunk" for the trunk and "mesh" for the twigs (the twigs can be modified with the material component)
+The trunk material is named "trunk" (in getObject3D("trunk")), and the twigs material "twigs" (in getObject3D("mesh")) - the **material** component will modify the appearance of the twigs.
 
 Demo at https://harlyq.github.io/aframe-proctree-component/ (twig-1 from donmccurdy)
 
