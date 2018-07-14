@@ -1,10 +1,10 @@
 # aframe-proctree-component
 
-AFRAME **proctree** component for generating procedural trees using https://github.com/supereggbert/proctree.js/ from supereggbert.
+AFRAME **proctree** component for generating procedural trees using [proctree](https://github.com/supereggbert/proctree.js/) from supereggbert.
 
 The trunk material is named "trunk" (in getObject3D("trunk")), and the twigs material "twigs" (in getObject3D("mesh")) - the **material** component will modify the appearance of the twigs.
 
-Demo at https://harlyq.github.io/aframe-proctree-component/ (twig-1 from donmccurdy)
+[Click for demo](https://harlyq.github.io/aframe-proctree-component/) (twig-1 from donmccurdy)
 
 ![Screenshot](assets/screenshot.jpg)
 
@@ -68,5 +68,8 @@ Demo at https://harlyq.github.io/aframe-proctree-component/ (twig-1 from donmccu
 
 **trunkLength** - the height of the trunk below the first branch (*number*) default 2.4
 
-**vMultiplier** - TBD (*number*) default 2.36
+**vMultiplier** - vertical scaling for the UVs on the trunk (*number*) default 2.36
 
+## Limitations
+
+The UV mappings for the trunk texture requires WrapS and WrapT to be THREE.RepeatWrapping. From AFrame you will need to use a material with a **repeat** value that is not 1,1 (e.g. 1.0001, 1.0001).

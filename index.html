@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-materialx-component@^0.1.0/aframe-materialx-component.js"></script>
     <!--script src="https://unpkg.com/aframe-proctree-component@^0.1.0/dist/aframe-proctree-component.min.js"></script-->
     <script src="dist/aframe-proctree-component.js"></script>
   </head>
   <body>
     <a-scene background="color:grey">
       <a-plane rotation="-90 0 0" position="0 0 -10" scale="10 10 10" material="color: green; transparent: true; opacity: .5"></a-plane>
-      <a-entity proctree position="0 0 -10" material="src:url(assets/twig-1.png); color: white; transparent: true; alphaTest: 0.5; metalness: 1; side: double"></a-entity>
+      <a-entity proctree position="0 0 -10" material="src:url(assets/twig-1.png); color: white; transparent: true; alphaTest: 0.5; metalness: 1; side: double" materialx="remap: trunk; src:url(assets/bark.png); repeat: 1.0001 1.0001"></a-entity>
     </a-scene>
   </body>
 </html>

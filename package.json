@@ -13,10 +13,10 @@
   },
   "author": "harlyq",
   "keywords": [
-    "a-frame",
     "aframe",
-    "aframe-vr",
-    "aframe-component"
+    "component",
+    "proctree",
+    "tree"
   ],
   "peerDependencies": {
     "aframe": "^0.8.2"
