@@ -32,6 +32,7 @@ AFRAME.registerComponent("proctree", {
 		trunkColor: { type: "color", default: "brown" },
 		trunkLength: { default: 2.4 },
     vMultiplier: { default: 2.36 },
+    generateTwigs: { default: true },
   },
 
   init() {
@@ -47,24 +48,28 @@ AFRAME.registerComponent("proctree", {
 
     let tree = new Tree(params)
     let trunkGeo = this.newGeo(tree.verts, tree.faces, tree.UV)
-    let twigsGeo = this.newGeo(tree.vertsTwig, tree.facesTwig, tree.uvsTwig)
-
     trunkGeo = new THREE.BufferGeometry().fromGeometry(trunkGeo)
-    twigsGeo = new THREE.BufferGeometry().fromGeometry(twigsGeo)
 
     // reuse the previous trunk material, this lets other components override the materials, and also
     // lets us keep material changes that are made through the inspector
     let trunkMat = this.el.getObject3D(TRUNK) ? this.el.getObject3D(TRUNK).material : this.trunkMat
-    let twigsMat = this.el.getObject3D(MESH) ? this.el.getObject3D(MESH).material : this.twigsMat
 
     // change our trunkMat, so we don't alter the color if another component replaced the trunk material
     this.trunkMat.color.setStyle(this.data.trunkColor)
 
     let trunkMesh = new THREE.Mesh(trunkGeo, trunkMat)
-    let twigsMesh = new THREE.Mesh(twigsGeo, twigsMat)
 
     this.el.setObject3D(TRUNK, trunkMesh) // need a special component to texture this
-    this.el.setObject3D(MESH, twigsMesh) // can texture this with the material component
+
+    if (this.data.generateTwigs) {
+      let twigsGeo = this.newGeo(tree.vertsTwig, tree.facesTwig, tree.uvsTwig)
+      twigsGeo = new THREE.BufferGeometry().fromGeometry(twigsGeo)
+      let twigsMat = this.el.getObject3D(MESH) ? this.el.getObject3D(MESH).material : this.twigsMat
+      let twigsMesh = new THREE.Mesh(twigsGeo, twigsMat)
+      this.el.setObject3D(MESH, twigsMesh) // can texture this with the material component
+    } else {
+      this.el.removeObject3D(MESH)
+    }
   },
 
   newGeo(verts, faces, uv) {

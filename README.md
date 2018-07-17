@@ -24,13 +24,19 @@ The trunk material is named "trunk" (in getObject3D("trunk")), and the twigs mat
 
 ## Properties
 
-**seed** - seed for the psuedo random number generator. if negative, then use randomly generate a seed at startup (*int*) default 262
+**branchFactor** - factor defining how close branches are together. a lower number is closer together (*number*) default 2.45
 
-**segments** - number of faces for the trunk and branches (*int*) default 6
+**climbRate** - how high the tree climbs at each treeStep (*number*) default 0.371
 
-**levels** - number of branching stages (*int*) default 5
+**clumpMax** - upper bound for how much branches clump (*number*) default 0.454
 
-**twigScale** - scale of the twig planes (*number) default: 0.39
+**clumpMin** - lower bound for how much branches clump (*number*) default 0.404
+
+**dropAmount** - factor determining how much non-primary branches drop. numbers above 0 raise, and below 0 droop (*number*) default -0.1
+
+**generateTwigs** - generate geometry for folliage (object3D "twigs") (*boolean*) default true
+
+**growAmount** - facter affecting how much branches grow. negative numbers grow downwards and positive number upwards (*number*) default 0.235
 
 **initialBranchLength** - length of the first branch in m (*number*) default 0.49
 
@@ -38,35 +44,31 @@ The trunk material is named "trunk" (in getObject3D("trunk")), and the twigs mat
 
 **lengthFalloffPower** - branch length = (parent branch length ^ lengthFalloffPower) * lengthFalloffFactor (*number*) default 0.99
 
-**clumpMax** - upper bound for how much branches clump (*number*) default 0.454
-
-**clumpMin** - lower bound for how much branches clump (*number*) default 0.404
-
-**branchFactor** - factor defining how close branches are together. a lower number is closer together (*number*) default 2.45
-
-**dropAmount** - factor determining how much non-primary branches drop. numbers above 0 raise, and below 0 droop (*number*) default -0.1
-
-**growAmount** - facter affecting how much branches grow. negative numbers grow downwards and positive number upwards (*number*) default 0.235
-
-**sweepAmount** - makes branches sweep left or right. 0 is no sweep, sweep increasing as positive or negative increases (*number*) default 0.01
+**levels** - number of branching stages (*int*) default 5
 
 **maxRadius** - the radius of the main trunk (which impacts the radius of all sub elements) (*number*) default 0.139
 
-**climbRate** - how high the tree climbs at each treeStep (*number*) default 0.371
+**radiusFalloffRate** - the rate of change of the thickness of branches (*number*) default 0.73
 
-**trunkKink** - defines the trunk deviation. 0 is no deviation (*number*) default 0.093
+**seed** - seed for the psuedo random number generator. if negative, then use randomly generate a seed at startup (*int*) default 262
 
-**treeSteps** - the number of verticle stages in the tree (*int*) default 5
+**segments** - number of faces for the trunk and branches (*int*) default 6
+
+**sweepAmount** - makes branches sweep left or right. 0 is no sweep, sweep increasing as positive or negative increases (*number*) default 0.01
 
 **taperRate** - changes the thickness of the trunk and branches the higher they go, or the further they branch.  the smaller the number the more tapered the branches (*number*) default 0.947
 
-**radiusFalloffRate** - the rate of change of the thickness of branches (*number*) default 0.73
-
-**twistRate** - the twisting of branches around the trunk. 0 is no twisting (*number*) default 3.02
+**treeSteps** - the number of verticle stages in the tree (*int*) default 5
 
 **trunkColor** - colour of the trunk (*color*) default brown
 
 **trunkLength** - the height of the trunk below the first branch (*number*) default 2.4
+
+**trunkKink** - defines the trunk deviation. 0 is no deviation (*number*) default 0.093
+
+**twigScale** - scale of the twig planes (*number) default: 0.39
+
+**twistRate** - the twisting of branches around the trunk. 0 is no twisting (*number*) default 3.02
 
 **vMultiplier** - vertical scaling for the UVs on the trunk (*number*) default 2.36
 
